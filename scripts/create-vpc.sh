@@ -2,23 +2,24 @@
 
 # **************** Global variables
 
+# ***************** for your configuration
 export RESOURCE_GROUP=default
 export REGION="us-south"
 export VPC_NAME="my-example-vpc"
-export VPC_ID=""
-export ZONE1=""
-export ZONE2=""
-export ZONE3=""
 export SUBNET_NAME="my-example-subnet-1"
 export DEFAULT_NETWORK_ACL="my-default-example-acl"
 export DEFAULT_ROUTING_TABLE="my-default-example-routing-table"
 export DEFAULT_SECURITY_GROUP="my-default-example-security-group"
 export PUBLIC_GATEWAY="my-public-gateway"
+
+# ***************** don't change
+export VPC_ID=""
+export ZONE1=""
+export ZONE2=""
+export ZONE3=""
 export DEFAULT_NETWORK_ACL_ID=""
 export DEFAULT_ROUTING_TABLE_ID=""
 export DEFAULT_SECURITY_GROUP_ID=""
-
-
 export TMP_VPC_CONFIG=tmp-vpc-configuration.json
 export TMP_SUBNETS=tmp-subnets.json
 export TMP_ZONE=tmp-zone.json
