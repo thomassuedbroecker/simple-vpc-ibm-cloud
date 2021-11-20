@@ -10,7 +10,7 @@ export SUBNET_NAME="my-example-subnet-1"
 export DEFAULT_NETWORK_ACL="my-default-example-acl"
 export DEFAULT_ROUTING_TABLE="my-default-example-routing-table"
 export DEFAULT_SECURITY_GROUP="my-default-example-security-group"
-export PUBLIC_GATEWAY="my-public-gateway"
+export PUBLIC_GATEWAY="my-example-public-gateway"
 
 # ***************** don't change
 export VPC_ID=""

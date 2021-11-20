@@ -2,4 +2,4 @@
 
 This project is used to support following blog posts:
 
-- [TBD](TBD)
+- [Create a very simple Virtual Private Cloud using the IBM Cloud CLI](tps://suedbroecker.net/2021/11/20/create-a-very-simple-virtual-private-cloud-using-the-ibm-cloud-cli/)
