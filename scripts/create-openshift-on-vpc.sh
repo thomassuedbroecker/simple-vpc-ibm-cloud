@@ -26,6 +26,7 @@ export OPENSHIFT_CLUSTER_VERSION="4.8_openshift"
 export OPENSHIFT_CLUSTER_NAME="vpc-openshift-cluster"
 export OPENSHIFT_WORKNODE_COUNT="2"
 export OPENSHIFT_WORKNODE_FLAVOR="bx2.4x16"
+export OPENSHIFT_ENTITLEMENT="cloud_pak"
 
 # ***************** don't change
 
@@ -186,7 +187,7 @@ function createSubnet () {
 function createObjectStorage () {
 
     echo "-> ------------------------------------------------------------"
-    echo "-  Create ObjectStorage: $OBJECT_STORAGE_INSTANCE"
+    echo "-  Create Object Storage: $OBJECT_STORAGE_INSTANCE"
     echo "-> ------------------------------------------------------------"
 
     ibmcloud resource service-instance-create $OBJECT_STORAGE_INSTANCE cloud-object-storage $OBJECT_STORAGE_PLAN $OBJECT_STORAGE_REGION
@@ -199,7 +200,7 @@ function createObjectStorage () {
 function createOpenShiftCluster() {
  
     echo "-> ------------------------------------------------------------"
-    echo "-> Create OpenShift Cluster: $OPENSHIFT_CLUSTER_NAME"
+    echo "-> Create OpenShift cluster: $OPENSHIFT_CLUSTER_NAME"
     echo "-> ------------------------------------------------------------"
     ibmcloud oc cluster create vpc-gen2 --name $OPENSHIFT_CLUSTER_NAME \
                                         --zone $ZONE1 \
@@ -208,10 +209,11 @@ function createOpenShiftCluster() {
                                         --workers $OPENSHIFT_WORKNODE_COUNT \
                                         --vpc-id $VPC_ID \
                                         --subnet-id $SUBNET_ID \
-                                        --cos-instance $OBJECT_STORAGE_COS_CRN
-                                        #--cos-instance $OBJECT_STORAGE_INSTANCE
+                                        --cos-instance $OBJECT_STORAGE_COS_CRN \
+                                        --entitlement $OPENSHIFT_ENTITLEMENT
+
     echo "-> ------------------------------------------------------------"
-    echo "-  Details of the OpenShift Cluster: $OPENSHIFT_CLUSTER_NAME"
+    echo "-  Details of the OpenShift cluster: $OPENSHIFT_CLUSTER_NAME"
     echo "-> ------------------------------------------------------------"
     ibmcloud oc cluster get --cluster $OPENSHIFT_CLUSTER_NAME \
                             --output json > ./$TMP_CLUSTER

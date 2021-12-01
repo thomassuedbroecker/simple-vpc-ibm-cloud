@@ -84,13 +84,8 @@ function deleteVPC() {
 }
 
 function deleteObjectStorage() {  
-  ibmcloud resource service-instance $OBJECT_STORAGE_INSTANCE --output json > ./$TMP_OBJECT_STORAGE
-  OBJECT_STORAGE_ID=$(cat ./$TMP_OBJECT_STORAGE | jq '.[].id' | sed 's/"//g')
-  #echo " OBJECT_Storage CRN : $OBJECT_STORAGE_COS_CRN"
-  rm -f ./$TMP_OBJECT_STORAGE
-
-  echo "-> Delete Object Storage: $OBJECT_STORAGE_ID"  
-  ibmcloud resource service-instance-delete $OBJECT_STORAGE_ID -f
+  echo "-> Delete Object Storage: $OBJECT_STORAGE_INSTANCE"  
+  ibmcloud resource service-instance-delete $OBJECT_STORAGE_INSTANCE -g $RESOURCE_GROUP -f
 }
 
 function deleteOpenShiftCluster() {
