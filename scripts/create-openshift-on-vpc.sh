@@ -123,7 +123,7 @@ function createVPC() {
     echo "- Security group: " $TMP_DEFAULT_SECURITY_GROUP
     echo "-> ------------------------------------------------------------"
 
-    ZONE1="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/1/ {print $0}')"
+    ZONE1="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/1/ {print $0}'))"
     ZONE2="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/2/ {print $1}'))"
     ZONE3="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/3/ {print $2}'))"
     
