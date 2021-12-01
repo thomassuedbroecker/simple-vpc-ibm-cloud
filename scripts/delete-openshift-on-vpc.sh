@@ -18,10 +18,10 @@ export DEFAULT_SECURITY_GROUP="my-default-openshift-security-group"
 export PUBLIC_GATEWAY="my-openshift-public-gateway"
 
 # *** Object Storage
-export OBJECT_STOARGE_INSTANCE="vpc-openshift-cos"
-export OBJECT_STOARGE_PLAN="standard"
-export OBJECT_STOARGE_REGION="global"
-export OBJECT_STOARGE_COS_CRN=""
+export OBJECT_STORAGE_INSTANCE="vpc-openshift-cos"
+export OBJECT_STORAGE_PLAN="standard"
+export OBJECT_STORAGE_REGION="global"
+export OBJECT_STORAGE_COS_CRN=""
 
 # *** OpenShift
 
@@ -85,7 +85,9 @@ function deleteVPC() {
 
 function deleteObjectStorage() {  
   echo "-> Delete Object Storage: $OBJECT_STORAGE_INSTANCE"  
-  ibmcloud resource service-instance-delete $OBJECT_STORAGE_INSTANCE -g $RESOURCE_GROUP -f
+  ibmcloud resource service-instance-delete $OBJECT_STORAGE_INSTANCE \
+                                            -g $RESOURCE_GROUP \
+                                            -f
 }
 
 function deleteOpenShiftCluster() {
