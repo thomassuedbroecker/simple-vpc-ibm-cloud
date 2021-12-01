@@ -49,14 +49,11 @@ export TMP_SUBNETS=tmp-subnets.json
 export TMP_ZONE=tmp-zone.json
 export TMP_PUBLICGATEWAY=tmp-public-gateway.json
 
-
 # *** Object Storage
 export TMP_OBJECT_STORAGE=tmp-objectstorage.json
 
 # *** Cluster
 export TMP_CLUSTER=tmp-cluster.json
-
-
 
 # **********************************************************************************
 # Functions definition
@@ -238,8 +235,6 @@ function createOpenShiftCluster() {
     URL="https://cloud.ibm.com/kubernetes/clusters/$CLUSTER_ID"
     echo "- IBM Cloud Web UI: $URL"
     open "$URL"
-
-
 }
 
 # **********************************************************************************
@@ -247,24 +242,33 @@ function createOpenShiftCluster() {
 # **********************************************************************************
 
 setupCLIenv
-
-#installIBMPlugins
+echo "<-- PRESS ANY KEY"
 read
 
+#installIBMPlugins
+#echo "<-- PRESS ANY KEY"
+#read
+
 createVPC
+echo "<-- PRESS ANY KEY"
 read
 
 renameDefaultNames
+echo "<-- PRESS ANY KEY"
 read
 
 createPublicGateway
+echo "<-- PRESS ANY KEY"
 read
 
 createSubnet
+echo "<-- PRESS ANY KEY"
 read
 
 createObjectStorage
+echo "<-- PRESS ANY KEY"
 read
 
 createOpenShiftCluster
+echo "<-- PRESS ANY KEY"
 read
