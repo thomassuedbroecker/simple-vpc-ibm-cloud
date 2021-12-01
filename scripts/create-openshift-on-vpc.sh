@@ -22,7 +22,6 @@ export OBJECT_STORAGE_REGION="global"
 export OBJECT_STORAGE_COS_CRN=""
 
 # *** OpenShift
-
 export OPENSHIFT_CLUSTER_VERSION="4.8_openshift"
 export OPENSHIFT_CLUSTER_NAME="vpc-openshift-cluster"
 export OPENSHIFT_WORKNODE_COUNT="2"
@@ -126,7 +125,7 @@ function createVPC() {
 
     ZONE1="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/1/ {print $0}')"
     ZONE2="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/2/ {print $1}'))"
-    ZONE3="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/3/{print $2}'))"
+    ZONE3="$(cat ./$TMP_VPC_CONFIG | jq '.cse_source_ips[].zone.name' | sed 's/"//g' | awk '/3/ {print $2}'))"
     
     echo "-> ------------------------------------------------------------"
     echo "- Zones: $ZONE1 ; $ZONE2 ; $ZONE3"
