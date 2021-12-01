@@ -74,7 +74,7 @@ function installIBMPlugins() {
     echo "-> ------------------------------------------------------------"
 
     ibmcloud plugin install vpc-infrastructure
-    ibmcloud plugin install infrastructure-service
+    #ibmcloud plugin install infrastructure-service
     ibmcloud plugin install kubernetes-service
     ibmcloud plugin update
     ibmcloud plugin list
@@ -217,6 +217,7 @@ function createOpenShiftCluster() {
     echo "-> ------------------------------------------------------------"
     ibmcloud oc cluster get --cluster $OPENSHIFT_CLUSTER_NAME \
                             --output json > ./$TMP_CLUSTER
+    rm -f ./$TMP_CLUSTER
     CLUSTER_STATUS=$(cat ./$TMP_CLUSTER | jq '.status' | sed 's/"//g')
     CLUSTER_STATE=$(cat ./$TMP_CLUSTER | jq '.state' | sed 's/"//g')
     CLUSTER_ID=$(cat ./$TMP_CLUSTER | jq '.id' | sed 's/"//g')
