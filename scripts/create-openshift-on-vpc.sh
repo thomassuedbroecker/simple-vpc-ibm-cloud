@@ -153,28 +153,13 @@ function createPublicGateway () {
     echo "-> ------------------------------------------------------------"
     echo "-  Create Public Gateway: $PUBLIC_GATEWAY and bind zone: $ZONE1"
     echo "-> ------------------------------------------------------------"
-    #ibmcloud is public-gateway-create $PUBLIC_GATEWAY $VPC_ID $ZONE1 \
-    #                                  --resource-group-name $RESOURCE_GROUP \
-    #                                  --output JSON
+    ibmcloud is public-gateway-create $PUBLIC_GATEWAY $VPC_ID $ZONE1 \
+                                      --resource-group-name $RESOURCE_GROUP \
+                                      --output JSON
 
     ibmcloud is public-gateway $PUBLIC_GATEWAY --output json > ./$TMP_PUBLICGATEWAY
     PUBLICGATEWAY_ID=$(cat ./$TMP_PUBLICGATEWAY | jq '.id' | sed 's/"//g')
     rm -f ./$TMP_PUBLICGATEWAY
-    
-    # Uncomment only for debug
-    # ------------------------
-    #ibmcloud is vpc $VPC_NAME --output JSON > $TMP_VPC_CONFIG
-    #VPC_ID=$(cat ./$TMP_VPC_CONFIG | jq '.id' | sed 's/"//g')
-    #rm -f ./$TMP_VPC_CONFIG
-    #ibmcloud is subnet $SUBNET_NAME --vpc $VPC_ID --output json > ./$TMP_SUBNETS
-    #SUBNET_ID=$(cat ./$TMP_SUBNETS | jq '.id' | sed 's/"//g')
-    #rm -f ./$TMP_SUBNETS
-
-    echo "-> ------------------------------------------------------------"
-    echo "-  Attach Public Gateway ($PUBLICGATEWAY_ID) to Subnet ($SUBNET_NAME)"
-    echo "-> ------------------------------------------------------------"  
-    ibmcloud is subnet-update $SUBNET_NAME --pgw $PUBLICGATEWAY_ID
-
 }
 
 function createSubnet () { 
@@ -190,6 +175,11 @@ function createSubnet () {
     echo "-> ------------------------------------------------------------"
     echo "-  Subnet ID : $SUBNET_ID"
     echo "-> ------------------------------------------------------------"
+
+    echo "-> ------------------------------------------------------------"
+    echo "-  Attach Public Gateway ($PUBLICGATEWAY_ID) to Subnet ($SUBNET_NAME)"
+    echo "-> ------------------------------------------------------------"  
+    ibmcloud is subnet-update $SUBNET_NAME --pgw $PUBLICGATEWAY_ID
 
     rm -f ./$TMP_SUBNETS
 }
