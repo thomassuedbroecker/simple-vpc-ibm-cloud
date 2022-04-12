@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# FYI: Made with vpc-infrastructure[infrastructure-service] 3.4.0 plugin version
+
 # **************** Global variables
 
 # ***************** for your configuration
