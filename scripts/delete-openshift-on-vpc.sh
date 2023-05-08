@@ -2,33 +2,9 @@
 
 # **************** Global variables
 
-# **************** Global variables
-
 # ***************** for your configuration
 # *** IBM Cloud locations
-export RESOURCE_GROUP=default
-export REGION="us-south"
-
-# *** VPC
-export VPC_NAME="my-openshift-vpc"
-export SUBNET_NAME="my-openshift-subnet-1"
-export DEFAULT_NETWORK_ACL="my-default-openshift-acl"
-export DEFAULT_ROUTING_TABLE="my-default-openshift-routing-table"
-export DEFAULT_SECURITY_GROUP="my-default-openshift-security-group"
-export PUBLIC_GATEWAY="my-openshift-public-gateway"
-
-# *** Object Storage
-export OBJECT_STORAGE_INSTANCE="vpc-openshift-cos"
-export OBJECT_STORAGE_PLAN="standard"
-export OBJECT_STORAGE_REGION="global"
-export OBJECT_STORAGE_COS_CRN=""
-
-# *** OpenShift
-
-export OPENSHIFT_CLUSTER_VERSION="4.8_openshift"
-export OPENSHIFT_CLUSTER_NAME="vpc-openshift-cluster"
-export OPENSHIFT_WORKNODE_COUNT="3"
-export OPENSHIFT_WORKNODE_FLAVOR="bx2.4x16"
+source ./.env
 
 # ***************** don't change
 export VPC_ID=""
